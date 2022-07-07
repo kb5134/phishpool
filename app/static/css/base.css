@@ -8,6 +8,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: #121214;
 }
 
 .container {
@@ -17,16 +18,10 @@ body {
 }
 
 .navbar {
-  width: 100%;
-  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+  width: 10%;
 }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 62px;
-}
+
 
 .navbar .menu-items {
   display: flex;
@@ -38,7 +33,7 @@ body {
 
 .navbar .nav-container a {
   text-decoration: none;
-  color: #0e2431;
+  color: #4B5E64;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
@@ -84,7 +79,7 @@ body {
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: #0e2431;
+  background: #4B5E64;
 }
 
 .nav-container .hamburger-lines .line1 {
@@ -103,7 +98,6 @@ body {
 
 .navbar .menu-items {
   padding-top: 120px;
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
   height: 100vh;
   width: 100%;
   transform: translate(-150%);
@@ -121,13 +115,6 @@ body {
   font-weight: 500;
 }
 
-.logo {
-  position: absolute;
-  top: 5px;
-  right: 15px;
-  font-size: 1.2rem;
-  color: #0e2431;
-}
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
   transform: translateX(0);
@@ -145,6 +132,15 @@ body {
   transform: rotate(-45deg);
 }
 
-.nav-container input[type="checkbox"]:checked ~ .logo{
-  display: none;
+#baixo{
+  position: absolute;
+  bottom: 0%;
+}
+
+.logo{
+  position: fixed;
+  max-width: 100px;
+  max-height: 100px;
+  top: 5px;
+  right: 1%;
 }
