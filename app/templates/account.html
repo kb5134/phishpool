@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{user}} account</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/menu.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+</head>
+<body>
+    <nav>
+        <div class="actions"> 
+          <ul>
+            <li><a href="#">Enviar uma URL</a></li>
+            <li><a href="#">Lista de URLs aprovadas</a></li>
+            <li><a href="#">Documentação da API</a></li>
+          </ul>
+        </div>
+        <div class="navbar">
+          <div class="nav-container">
+            <input class="checkbox" type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>
+            
+            <img src="{{url_for('static', filename='images/logo-white-2.png')}}" class="logo">
+  
+            <div class="menu-items">
+              <li><a href="#">Home</a></li>
+              <li><a href="/account">Account</a></li>
+              <div id = "baixo">
+                <li><a href="#">Dark Mode</a></li>
+                <li><a href="#">Log Out</a></li>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <main>
+        {% if user%}
+        <h2>ola, {{user}} seja bem vindo </h2>
+        {%else%}
+        <h2>Ola</h2>
+        {%endif%}
+    </main>
+</body>
+</html>

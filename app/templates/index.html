@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>phishpool</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/menu.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
 </head>
 <body>
     <nav>
+      <div class="actions"> 
+        <ul>
+          <li><a href="#">Enviar uma URL</a></li>
+          <li><a href="#">Lista de URLs aprovadas</a></li>
+          <li><a href="#">Documentação da API</a></li>
+        </ul>
+      </div>
       <div class="navbar">
-        <div class="container nav-container">
+        <div class="nav-container">
           <input class="checkbox" type="checkbox" name="" id="" />
           <div class="hamburger-lines">
             <span class="line line1"></span>
@@ -29,5 +37,11 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+    <h1>Phishing pool</h1>
+    <p>
+      Seja bem vindo ao phishpool, uma platafroma aonde usuários de todo país podem inserir paginas quae acreditam ser maliciosas para que as mesmas sejam analsiadas por um IA treinada para encontrar divergênias através do reconhecimento de padrões
+    </p>
+  </div>
   </body>
 </html>
