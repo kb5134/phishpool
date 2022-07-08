@@ -8,4 +8,4 @@ def index():
 @app.route("/account/<user>")
 @app.route("/account/", defaults={'user':None})
 def acoount(user):
-    return render_template('account.html', user=user.title())
+    return render_template('account.html', user=user)

@@ -20,11 +20,11 @@ body {
 
 .navbar {
   width: 10%;
-
+  
 }
-
-
-
+nav{
+  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+}
 .navbar .menu-items {
   display: flex;
   border-left: #44565c;
@@ -121,6 +121,7 @@ body {
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
   transform: translateX(0);
+  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
 }
 
 .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
@@ -165,6 +166,6 @@ ul li a{
 .actions{
   position: fixed;
   top: 8px;
-  left: 4%;
+  left: 7.5%;
 }
 

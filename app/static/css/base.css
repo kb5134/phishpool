@@ -2,9 +2,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-  }
-  h2{
-    position: absolute;
-    left: 8%;
-  }
+ }
+
+ .urls{
+  position: fixed;
+  left: 8%;
+  top: 13%;
+  display: flex;
+	width: 100px;
+	height: 100px;
+
+ }
+
+.postadas{
+  position: relative;
+  text-align: center;
+  font-size: 70px;
+  padding: 10px;
+  margin: 10px;
+  border-width: 1px;
+  border-style:solid;
+  border-radius: 100%;
+}
+
+.aprovadas{
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  font-size: 70px;
+  padding: 10px;
+
+}
+
