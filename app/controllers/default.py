@@ -6,6 +6,6 @@ def index():
     return render_template("index.html")
 
 @app.route("/account/<user>")
-@app.route("/account/", defaults={'user':None})
+@app.route("/account/", defaults={'user':'user'})
 def acoount(user):
     return render_template('account.html', user=user)
