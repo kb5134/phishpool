@@ -10,7 +10,7 @@
     <nav>
       <div class="actions"> 
         <ul>
-          <li><a href="#">Enviar uma URL</a></li>
+          <li><a href="envio">Enviar uma URL</a></li>
           <li><a href="#">Lista de URLs aprovadas</a></li>
           <li><a href="#">Documentação da API</a></li>
         </ul>
@@ -27,8 +27,8 @@
           <img src="{{url_for('static', filename='images/logo-white-2.png')}}" class="logo">
 
           <div class="menu-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Account</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/account">Account</a></li>
             <div id = "baixo">
               <li><a href="#">Dark Mode</a></li>
               <li><a href="#">Log Out</a></li>
@@ -37,11 +37,8 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-    <h1>Phishing pool</h1>
-    <p>
-      Seja bem vindo ao phishpool, uma platafroma aonde usuários de todo país podem inserir paginas quae acreditam ser maliciosas para que as mesmas sejam analsiadas por um IA treinada para encontrar divergênias através do reconhecimento de padrões
-    </p>
-  </div>
+    {% block content %}
+      
+    {% endblock content %}
   </body>
 </html>

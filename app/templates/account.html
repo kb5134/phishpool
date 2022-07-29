@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>{{user}} account</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/menu.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
-</head>
-<body>
-    <nav>
-        <div class="actions"> 
-          <ul>
-            <li><a href="#">Enviar uma URL</a></li>
-            <li><a href="#">Lista de URLs aprovadas</a></li>
-            <li><a href="#">Documentação da API</a></li>
-          </ul>
-        </div>
-        <div class="navbar">
-          <div class="nav-container">
-            <input class="checkbox" type="checkbox" name="" id="" />
-            <div class="hamburger-lines">
-              <span class="line line1"></span>
-              <span class="line line2"></span>
-              <span class="line line3"></span>
-            </div>
-            
-            <a href="/"><img src="{{url_for('static', filename='images/logo-white-2.png')}}" class="logo"></a>
+{% extends 'menu.html' %}
+{% block content %}
   
-            <div class="menu-items">
-              <li><a href="#">Home</a></li>
-              <li><a href="/account">Account</a></li>
-              <div id = "baixo">
-                <li><a href="#">Dark Mode</a></li>
-                <li><a href="#">Log Out</a></li>
-              </div>
-            </div>
-          </div>
-        </div>
-    </nav>
+
     <main>
       <div class="urls">
         <div class="postadas">
@@ -61,5 +26,4 @@
         Sed suscipit leo nec arcu semper, sed volutpat dui convallis. Vestibulum ut risus placerat, iaculis est id, dignissim urna. Duis porta blandit massa, ac congue nisl pharetra auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean vestibulum lobortis magna, nec condimentum dolor congue elementum. Nunc eget velit lorem. Ut pulvinar turpis eget molestie consequat. Ut quam nisl, faucibus sit amet quam at, laoreet molestie purus. Phasellus iaculis mauris a elementum rhoncus. </p>
         
     </aside>
-</body>
-</html>
+  {% endblock content %}
