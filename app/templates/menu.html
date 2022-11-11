@@ -3,40 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>phishpool</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/menu.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/Alterações.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/signin.css')}}">
 </head>
 <body>
-    <nav>
-      <div class="actions"> 
-        <ul>
-          <li><a href="envio">Enviar uma URL</a></li>
-          <li><a href="#">Lista de URLs aprovadas</a></li>
-          <li><a href="#">Documentação da API</a></li>
-        </ul>
-      </div>
-      <div class="navbar">
-        <div class="nav-container">
-          <input class="checkbox" type="checkbox" name="" id="" />
-          <div class="hamburger-lines">
-            <span class="line line1"></span>
-            <span class="line line2"></span>
-            <span class="line line3"></span>
-          </div>
-          
-          <img src="{{url_for('static', filename='images/logo-white-2.png')}}" class="logo">
-
-          <div class="menu-items">
-            <li><a href="/">Home</a></li>
-            <li><a href="/account">Account</a></li>
-            <div id = "baixo">
-              <li><a href="#">Dark Mode</a></li>
-              <li><a href="#">Log Out</a></li>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <header>
+    <a class="logo" href="/dashboard"
+      ><img
+        src="{{url_for('static', filename='images/phishing.png')}}"
+        width="90%"
+        style="filter: invert(100%)"
+    /></a>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Enviar uma URL</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Lista de URLs aprovadas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Documentação da API</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout">Sair</a>
+      </li>
+    </ul>
+  </header>
     {% block content %}
       
     {% endblock content %}
