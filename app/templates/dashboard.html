@@ -1,0 +1,62 @@
+{% extends 'menu.html' %}
+{% block content %}
+    
+    <main>
+    
+      <div class="row row-cols-1 row-cols-md-3 g-4" style="width: 80%; top:23%; position: absolute;">
+        <div
+          class="card"
+          style="border-style: solid; border-color: blue; border-width: 3px"
+        >
+          <div class="card-body">
+            <h5 class="card-title">URL's Recebidas</h5>
+            <p class="align-middle">Numero de URLS recebidas</p>
+          </div>
+        </div>
+        <div
+          class="card"
+          style="border-style: solid; border-color: green; border-width: 3px"
+        >
+          <div class="card-body">
+            <h5 class="card-title">URL's Recebidas</h5>
+            <p class="align-middle">Numero de URLS Aprovadas</p>
+          </div>
+        </div>
+        <div
+          class="card"
+          style="border-style: solid; border-color: red; border-width: 3px"
+        >
+          <div class="card-body">
+            <h5 class="card-title">URL's Recebidas</h5>
+            <p class="align-middle">Numero de URLS Reprovadas</p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute top-0 start-80" style="width: 20%;">
+        <h4 style="color: white;">Ultimas URLs reportadas</h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">URL</th>
+            <th scope="col">Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </main>
+        
+
+    {% endblock content %}
