@@ -23,15 +23,15 @@ def logout():
     return redirect(url_for('index'))
 
 @login_required
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+@login_required
 @app.route("/account/<user>")
 @app.route("/account/", defaults={'user':'user'})
 def acoount(user):
     return render_template('account.html', user=user)
-
-@login_required
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
 
 @login_required
 @app.route('/envio')
