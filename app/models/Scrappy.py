@@ -31,11 +31,10 @@ conteudo = navegador.page_source
 site = BeautifulSoup(conteudo, 'html.parser')
 
 sleep(2)
-produtos = site.findAll(
-    'div', attrs={'class': 'sh-pr__product-results-grid sh-pr__product-results'})
-for produto in produtos:
-    for i in range(3):
-        preco_produto = produto.findAll(
-            'span', attrs={'aria-hidden': 'true'})[i]
-        if 'R$' in str(preco_produto):
-            print(preco_produto.text)
+valores = []
+for i in range(3):
+    produtos = site.findAll('span', attrs={'class': 'e1dhv8140'})[i].text
+    valores.append(float(produtos.replace(",", ".")))
+
+valor_medio = round(sum(valores)/len(valores),2)
+
