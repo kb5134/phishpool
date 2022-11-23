@@ -36,3 +36,10 @@ class User(db.Model):
 
     def get_id(self):
         return str(self.id)
+
+class precos(db.Model):
+    __tablename__ = "precos"
+
+    id = db.Column(db.Integer, primary_key=True)
+    nome_produto = db.Column(db.String(50), unique=True)
+    media_peco = db.Column(db.Float())
