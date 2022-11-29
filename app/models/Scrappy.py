@@ -8,12 +8,12 @@ from time import sleep
 import locale
 
 class scrappy():
-    produto = input('insira o produto a ser buscado: ')
+    produto = input('Insira o produto a ser buscado: ')
 
     opts = webdriver.FirefoxOptions()
     opts.add_argument("--width=400")
     opts.add_argument("--height=800")
-    opts.add_argument('--headless')
+    #opts.add_argument('--headless')
     navegador = webdriver.Firefox(options=opts)
 
     navegador.get('https://www.promobit.com.br')
@@ -39,7 +39,9 @@ class scrappy():
         if len(produtos) <= 6:
             valores.append(float(produtos.replace(",",".")))
         else:
-            valores.append(float(produtos.replace(",",".").replace(".", ",")))
+            teste = produtos.replace(".","_").replace(",",".")
+            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+            valores.append(float(locale.atof(teste)))
 
     valor_medio = round(sum(valores)/len(valores),2)
     dados = []
