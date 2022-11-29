@@ -5,14 +5,15 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+import locale
 
 class scrappy():
-    produto = input('insira o produto a ser buscado: ')
+    produto = input('Insira o produto a ser buscado: ')
 
     opts = webdriver.FirefoxOptions()
     opts.add_argument("--width=400")
     opts.add_argument("--height=800")
-
+    #opts.add_argument('--headless')
     navegador = webdriver.Firefox(options=opts)
 
     navegador.get('https://www.promobit.com.br')
@@ -35,11 +36,16 @@ class scrappy():
     valores = []
     for i in range(3):
         produtos = site.findAll('span', attrs={'class': 'e1dhv8140'})[i].text
-        valores.append(float(produtos.replace(",", ".")))
+        if len(produtos) <= 6:
+            valores.append(float(produtos.replace(",",".")))
+        else:
+            teste = produtos.replace(".","_").replace(",",".")
+            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+            valores.append(float(locale.atof(teste)))
 
     valor_medio = round(sum(valores)/len(valores),2)
     dados = []
     dados.append([produto, valor_medio])
     print(dados)
     relatorio = pd.DataFrame(dados, columns=['Nome Produto', 'Valor Médio'])
-    relatorio.to_csv('valores_retornados.csv', index=False)
+    relatorio.to_csv('valores_retornados.csv', index=False, header=False, mode='a')
