@@ -23,7 +23,7 @@ class scrappy():
 
     sleep(0.5)
 
-    elemento = navegador.find_element(By.ID, '42')
+    elemento = navegador.find_element(By.ID, '40')
     elemento.send_keys(produto)
     elemento.send_keys(Keys.ENTER)
 
