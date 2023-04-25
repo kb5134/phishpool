@@ -1,0 +1,45 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(90px, auto);
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  .grid-item {
+    padding: 1%;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    color: black;
+  
+  }
+  .container {
+    max-width: 99%;
+    margin: 0 auto;
+    margin-top: 2px;
+  }
+  .id_sensor{
+    font-size: 16px;
+    text-align: start;
+    
+  }
+  .id_tag{
+    font-size: 12px;
+    text-align: start;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .label_temp {
+    font-size: 13px;
+    justify-content: center;
+    display: flex;
+    max-width: 97%;
+  }
+  .temp_unidade{
+    font-size: 15px;
+    text-align: start;
+  }
+  .temp{
+    font-size: 29px;
+    text-align: start;
+  }
+  
