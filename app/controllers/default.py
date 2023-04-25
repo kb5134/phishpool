@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
 from app.models.form import LoginForm
-from app.models.Scrappy import scrappy
 from app.models.tables import User
 from flask_login import login_user, logout_user, login_required, current_user
 

@@ -18,12 +18,12 @@ class scrappy():
 
     navegador.get('https://www.promobit.com.br')
 
-    elemento = navegador.find_element(By.CLASS_NAME, 'css-1kwy300')
+    elemento = navegador.find_element(By.CLASS_NAME, 'css-oghyru')
     elemento.click()
 
     sleep(0.5)
 
-    elemento = navegador.find_element(By.ID, 'autocomplete_search_mobile_topbar_page')
+    elemento = navegador.find_element(By.ID, '40')
     elemento.send_keys(produto)
     elemento.send_keys(Keys.ENTER)
 

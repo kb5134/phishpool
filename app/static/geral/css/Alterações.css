@@ -1,0 +1,22 @@
+.logo{
+    position: fixed;
+    max-width: 100px;
+    max-height: 100px;
+    top: 5px;
+    right: 1%;
+}
+li.nav-item {
+    border: white;
+    border-style: solid;
+    border-radius: 6%;
+    margin: 1%;
+    border-width: 1px;
+    white-space: nowrap;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+    }
+  
+  .selecionado {
+    background-color: #3a4750;
+  }
