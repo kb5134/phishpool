@@ -1,20 +1,18 @@
-{% extends 'menu.html' %}
+{% extends 'base/base.html' %}
 {% block content %}
 <div class="text-center">
     <main class="form-signin">
         <form action="" method="POST">
             {{form.csrf_token}}
-            <img class="mb-4" src="{{url_for('static', filename='images/phishing.png')}}" alt="" width="72" height="57" style="filter: invert(100%)">
+            <img class="mb-4" src="{{url_for('static', filename='/images/phishing.png')}}" alt="" width="72" height="57" style="filter: invert(100%)">
             <h1 class="h3 mb-3 fw-normal">login</h1>
         
             <div class="form-floating">
-              {{form.username(class="form-control",id="floatingInput", placeholder='Seu Usuário')}}' '
-              <label for="floatingInput">Usuário </label>
-            </div>
+              {{form.username(class="form-control",id="floatingInput", placeholder='Seu Usuário')}}
+            </div><br>
             <div class="form-floating">
-                {{form.password(class="form-control", id="floatingPassword" )}}
-                <label for="floatingPassword">Senha</label>
-            </div>
+                {{form.password(class="form-control", id="floatingPassword" , placeholder='Sua Senha')}}
+            </div><br>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         </form> 
     </main>
