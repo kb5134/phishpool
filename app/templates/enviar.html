@@ -1,4 +1,14 @@
-{% extends 'base/base.html' %}
-{% block content %}
-{{form}}
+{% extends 'base/base.html' %} {% block content %}{{form.csrf_token}}
+<div id="form-enviar" style="display: block; height: 62vh">
+  <form action="{{ url_for('dados') }}" id="formulario-url" method="POST">
+    {{form.nome_produto.label}}
+    {{form.nome_produto(class="form-control")}}
+    {{form.preco_produto.label}}
+    {{form.preco_produto(class="form-control")}}
+    {{form.url.label}}
+    {{form.url(class="form-control")}}
+    <br>
+    <button class="form-control" type="submit">Enviar</button>
+  </form>
+</div>
 {% endblock content %}
