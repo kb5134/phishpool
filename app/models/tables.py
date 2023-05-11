@@ -37,9 +37,12 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-class precos(db.Model):
-    __tablename__ = "precos"
+class tb_produto(db.Model):
+    __tablename__ = "produtos"
 
     id = db.Column(db.Integer, primary_key=True)
     nome_produto = db.Column(db.String(50), unique=True)
-    media_peco = db.Column(db.Float())
+    preco_informado = db.Column(db.Float()) 
+    media_preco = db.Column(db.Float())
+    url_produto = db.Column(db.String(255), unique=True)
+    status = db.Column(db.String(10), default='Analise')
