@@ -1,15 +1,18 @@
 {% extends 'base/base.html' %} {% block content %}
   <div id="gridContainer" class="grid-container">
     <div class="grid-item grid-item-" id="grid-item-"style="border-color:blue;border-style:solid;border-width:1px">
-      <h5 class="card-title">URL's Recebidas</h5>
-      <p class="align-middle">Numero de URLS recebidas</p>
+      <h5 class="card-title">URL's em Análise</h5>
+      <p class="align-middle">Numero de URLS em Analise</p>
+      {% for i in Analise  %}{{i[-1]}}{% endfor %}
     </div>
     <div class="grid-item grid-item-" id="grid-item-"style="border-color:green;border-style:solid;border-width:1px">
       <h5 class="card-title">URL's Aprovadas</h5>
       <p class="align-middle">Numero de URLS Aprovadas</p>
+      {% for i in Aprovado  %}{{i[-1]}}{% endfor %}
     </div>
     <div class="grid-item grid-item-" id="grid-item-" style="border-color:red;border-style:solid;border-width:1px">
       <h5 class="card-title">URL's Reprovadas</h5>
-      <p class="align-middle">Numero de URLS Reprovadas</p>    
+      <p class="align-middle">Numero de URLS Reprovadas</p>  
+      {% for i in Reprovado  %}{{i[-1]}}{% endfor %}  
     </div> 
 {% endblock content %}

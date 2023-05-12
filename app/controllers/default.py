@@ -1,7 +1,7 @@
-from app import app
+from app import app, db
 from flask import render_template, flash, redirect, url_for, request
 from app.models.form import LoginForm, BuscarValores
-from app.models.tables import User
+from app.models.tables import User, tb_produto
 from flask_login import login_user, logout_user, login_required, current_user
 from app.models.Scrappy import logica_scrappy
 
@@ -26,7 +26,13 @@ def logout():
 @login_required
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    Analise = "SELECT count(*) FROM produtos where status = 'Analise'"
+    qtdAnalise = db.session.execute(Analise)
+    Aprovado = "SELECT count(*) FROM produtos where status = 'Aprovado'"
+    qtdAprovado = db.session.execute(Aprovado)
+    Reprovado = "SELECT count(*) FROM produtos where status = 'Reprovado'"
+    qtdReprovado = db.session.execute(Reprovado)
+    return render_template('dashboard.html', Analise=qtdAnalise,Aprovado=qtdAprovado,Reprovado=qtdReprovado)
 
 @login_required
 @app.route("/account/<user>")
