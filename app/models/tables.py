@@ -41,8 +41,8 @@ class tb_produto(db.Model):
     __tablename__ = "produtos"
 
     id = db.Column(db.Integer, primary_key=True)
-    nome_produto = db.Column(db.String(50), unique=True)
+    nome_produto = db.Column(db.String(50), unique=False)
     preco_informado = db.Column(db.Float()) 
     media_preco = db.Column(db.Float())
-    url_produto = db.Column(db.String(255), unique=True)
+    url_produto = db.Column(db.String(255), unique=False)
     status = db.Column(db.String(10), default='Analise')

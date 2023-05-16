@@ -16,7 +16,7 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
 
     navegador = webdriver.Firefox(options=opts)
     navegador.get('https://www.promobit.com.br')
-    elemento = navegador.find_element(By.CLASS_NAME, 'css-oghyru')
+    elemento = navegador.find_element(By.CSS_SELECTOR, "[aria-label='Mostrar barra de busca']")
     elemento.click()
 
     sleep(0.5)
@@ -31,7 +31,8 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
     sleep(2)
     valores = []
     for i in range(3):
-        produtos = site.findAll('span', attrs={'class': 'e1dhv8140'})[i].text
+        produtos = site.findAll('span', attrs={'class': 'text-base font-bold lg:text-xl whitespace-nowrap text-blue-800 dark:text-blue-200'})[i].text
+        print(produtos)
         if len(produtos) <= 6:
             valores.append(float(produtos.replace(",", ".")))
         else:
@@ -39,7 +40,9 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             valores.append(float(locale.atof(teste)))
 
-    
+    verifica_produto = "Select * from produto where nome_produto = %s", produto
+    db.session.commit()
+    print('teste')
     cadastro = tb_produto(nome_produto=produto,
                             preco_informado=preco_informado,
                             media_preco = round(sum(valores)/len(valores),2),
