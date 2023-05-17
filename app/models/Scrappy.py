@@ -20,7 +20,9 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
     elemento.click()
 
     sleep(0.5)
-    elemento = navegador.find_element(By.ID, '40')
+    elemento = navegador.find_elements(By.CSS_SELECTOR, "[placeholder='O que você procura?']")[-1]
+    elemento.click()
+    sleep(0.5)
     elemento.send_keys(produto)
     elemento.send_keys(Keys.ENTER)
 
@@ -28,10 +30,11 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
     conteudo = navegador.page_source
     site = BeautifulSoup(conteudo, 'html.parser')
 
-    sleep(2)
+    sleep(3)
     valores = []
     for i in range(3):
-        produtos = site.findAll('span', attrs={'class': 'text-base font-bold lg:text-xl whitespace-nowrap text-blue-800 dark:text-blue-200'})[i].text
+        teste = site.find('div', attrs={'class': 'flex flex-col rounded-2 bg-white dark:bg-gray-850 mt-4 overflow-hidden pt-4'})
+        produtos = teste.findAll('span', attrs={'class': ['text-base font-bold lg:text-xl whitespace-nowrap text-blue-800 dark:text-blue-200']})[i].text
         print(produtos)
         if len(produtos) <= 6:
             valores.append(float(produtos.replace(",", ".")))
@@ -40,9 +43,9 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             valores.append(float(locale.atof(teste)))
 
-    verifica_produto = "Select * from produto where nome_produto = %s", produto
-    db.session.commit()
-    print('teste')
+    selectproduto = f"SELECT * FROM produtos where nome_produto = '{produto}'" 
+    selectproduto = db.session.execute(selectproduto)
+    print(selectproduto)
     cadastro = tb_produto(nome_produto=produto,
                             preco_informado=preco_informado,
                             media_preco = round(sum(valores)/len(valores),2),
