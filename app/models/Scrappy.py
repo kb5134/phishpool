@@ -42,15 +42,34 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
             teste = produtos.replace(".", "_").replace(",", ".")
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             valores.append(float(locale.atof(teste)))
-
-    selectproduto = f"SELECT * FROM produtos where nome_produto = '{produto}'" 
+    media_preco = round(sum(valores)/len(valores),2)
+    
+    
+    selectproduto = f"SELECT * FROM produtos where nome_produto = '{produto}'"
     selectproduto = db.session.execute(selectproduto)
-    print(selectproduto)
-    cadastro = tb_produto(nome_produto=produto,
-                            preco_informado=preco_informado,
-                            media_preco = round(sum(valores)/len(valores),2),
-                            url_produto=url_produto,
-                            status=status)
-    db.session.add(cadastro)
-    db.session.commit()
-    tb_produto.query.all()
+    resultado = selectproduto.fetchall()
+    print(resultado)
+    if len(resultado) != 0:
+        print('ja existe')
+        selctupdateproduto = f"SELECT * FROM produtos where nome_produto = '{produto}' and url_produto = '{url_produto}'" 
+        selctupdateproduto = db.session.execute(selctupdateproduto)
+        for i in selctupdateproduto:
+            if i.preco_informado != preco_informado: 
+                update = f"update produtos set preco_informado = '{preco_informado}' where nome_produto = '{produto}'"
+                db.session.execute(update)
+                db.session.commit()
+                print('preco')
+            if i.media_preco != media_preco:
+                update = f"update produtos set media_preco = '{media_preco}' where nome_produto = '{produto}'"
+                db.session.execute(update)
+                db.session.commit()
+                print('media_preco')
+    else:
+        cadastro = tb_produto(nome_produto=produto,
+                                preco_informado=preco_informado,
+                                media_preco = media_preco,
+                                url_produto=url_produto,
+                                status=status)
+        db.session.add(cadastro)
+        db.session.commit()
+        tb_produto.query.all()
