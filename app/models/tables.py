@@ -44,5 +44,6 @@ class tb_produto(db.Model):
     nome_produto = db.Column(db.String(50), unique=False)
     preco_informado = db.Column(db.Float()) 
     media_preco = db.Column(db.Float())
+    status_media = db.Column(db.String(10), default='Analise')
     url_produto = db.Column(db.String(255), unique=False)
     status = db.Column(db.String(10), default='Analise')
