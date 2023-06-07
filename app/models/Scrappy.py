@@ -30,7 +30,7 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
     conteudo = navegador.page_source
     site = BeautifulSoup(conteudo, 'html.parser')
 
-    sleep(3)
+    sleep(3)  
     valores = []
     for i in range(3):
         teste = site.find('div', attrs={'class': 'flex flex-col rounded-2 bg-white dark:bg-gray-850 mt-4 overflow-hidden pt-4'})
@@ -51,19 +51,31 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
     print(resultado)
     if len(resultado) != 0:
         print('ja existe')
-        selctupdateproduto = f"SELECT * FROM produtos where nome_produto = '{produto}' and url_produto = '{url_produto}'" 
-        selctupdateproduto = db.session.execute(selctupdateproduto)
-        for i in selctupdateproduto:
+        selectupdateproduto = f"SELECT * FROM produtos where nome_produto = '{produto}' and url_produto = '{url_produto}'" 
+        selectupdateproduto = db.session.execute(selectupdateproduto)
+        for i in selectupdateproduto:
             if i.preco_informado != preco_informado: 
-                update = f"update produtos set preco_informado = '{preco_informado}' where nome_produto = '{produto}'"
-                db.session.execute(update)
-                db.session.commit()
+                if float(preco_informado) < (media_preco * 0.3):
+                    update = f"update produtos set preco_informado = '{preco_informado}',status_media = 'Suspeito' where nome_produto = '{produto}'"
+                    db.session.execute(update)
+                    db.session.commit()
+                else:
+                    update = f"update produtos set preco_informado = '{preco_informado}',status_media = 'Confiavel' where nome_produto = '{produto}'"
+                    db.session.execute(update)
+                    db.session.commit()
+                
                 print('preco')
             if i.media_preco != media_preco:
-                update = f"update produtos set media_preco = '{media_preco}' where nome_produto = '{produto}'"
-                db.session.execute(update)
-                db.session.commit()
+                if float(preco_informado) < (media_preco * 0.3):
+                    update = f"update produtos set media_preco = '{media_preco}',status_media = 'Suspeito' where nome_produto = '{produto}'"
+                    db.session.execute(update)
+                    db.session.commit()
+                else:
+                    update = f"update produtos set media_preco = '{media_preco}',status_media = 'Confiavel' where nome_produto = '{produto}'"
+                    db.session.execute(update)
+                    db.session.commit()
                 print('media_preco')
+            
     else:
         cadastro = tb_produto(nome_produto=produto,
                                 preco_informado=preco_informado,
@@ -73,3 +85,12 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
         db.session.add(cadastro)
         db.session.commit()
         tb_produto.query.all()
+        if float(preco_informado) < (media_preco * 0.3):
+            print('media', media_preco *0.3)
+            media_status = f"update produtos set status_media = 'Suspeito' where nome_produto = '{produto}'"
+            db.session.execute(media_status)
+            db.session.commit()
+        else:
+            update = f"update produtos set media_preco = '{media_preco}',status_media = 'Confiavel' where nome_produto = '{produto}'"
+            db.session.execute(update)
+            db.session.commit()
