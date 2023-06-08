@@ -51,5 +51,11 @@ def envio():
 @app.route('/dados', methods=['POST'])
 def dados():
     logica_scrappy(request.form['nome_produto'],request.form['preco_produto'],request.form['url'],'Analise' )
-
     return 'meu ovo'
+
+@login_required
+@app.route('/lista_urls', methods=['POST', 'GET'])
+def lisa_urls():
+    query = "SELECT * FROM produtos"
+    lista = db.session.execute(query)
+    return render_template("lista_urls.html", lista=lista)
