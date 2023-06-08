@@ -45,15 +45,16 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
     media_preco = round(sum(valores)/len(valores),2)
     
     
-    selectproduto = f"SELECT * FROM produtos where nome_produto = '{produto}'"
+    selectproduto = f"SELECT * FROM produtos where url_produto = '{url_produto}'"
     selectproduto = db.session.execute(selectproduto)
     resultado = selectproduto.fetchall()
     print(resultado)
     if len(resultado) != 0:
         print('ja existe')
-        selectupdateproduto = f"SELECT * FROM produtos where nome_produto = '{produto}' and url_produto = '{url_produto}'" 
-        selectupdateproduto = db.session.execute(selectupdateproduto)
-        for i in selectupdateproduto:
+        selectproduto = f"SELECT * FROM produtos where url_produto = '{url_produto}'"
+        forprodutos = db.session.execute(selectproduto)
+        for i in forprodutos:
+            print(i)
             if i.preco_informado != preco_informado: 
                 if float(preco_informado) < (media_preco * 0.3):
                     update = f"update produtos set preco_informado = '{preco_informado}',status_media = 'Suspeito' where nome_produto = '{produto}'"
