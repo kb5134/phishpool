@@ -4,10 +4,12 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from datetime import timedelta
 
 
 app = Flask(__name__)
 app.config.from_object('config')
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
 #run_with_ngrok(app, auth_token='2FgufYFYVmF47Oh5O0EJ5mraGg9_4KUBtPyfTWMNTmQ3WmUiB')
 
 db = SQLAlchemy(app)
