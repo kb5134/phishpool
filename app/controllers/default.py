@@ -51,7 +51,7 @@ def envio():
 @app.route('/dados', methods=['POST'])
 def dados():
     logica_scrappy(request.form['nome_produto'],request.form['preco_produto'],request.form['url'],'Analise' )
-    return redirect(url_for('/lista_urls'))
+    return redirect(url_for('lisa_urls'))
 
 @login_required
 @app.route('/lista_urls', methods=['POST', 'GET'])

@@ -32,7 +32,7 @@ def logica_scrappy(produto, preco_informado,url_produto,status):
 
     sleep(3)  
     valores = []
-    for i in range(3):
+    for i in range(2 or 3):
         teste = site.find('div', attrs={'class': 'flex flex-col rounded-2 bg-white dark:bg-gray-850 mt-4 overflow-hidden pt-4'})
         produtos = teste.findAll('span', attrs={'class': ['text-base font-bold lg:text-xl whitespace-nowrap text-blue-800 dark:text-blue-200']})[i].text
         print(produtos)

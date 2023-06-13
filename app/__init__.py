@@ -45,6 +45,9 @@ class ProdutoView(ModelView):
         'preco_informado': {
             'Disabled': ''
         },
+        'status_media': {
+            'Disabled': ''
+        },
         'media_preco': {
             'Disabled': ''
         },
